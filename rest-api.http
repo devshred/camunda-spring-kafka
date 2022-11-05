@@ -1,0 +1,11 @@
+### start process with defaults
+GET http://localhost:9080/start
+
+### start process with parameters
+POST http://localhost:9080/start
+Content-Type: application/json
+
+{
+  "type": "HITCHHIKERS_GUIDE_TO_THE_GALAXY",
+  "locale": "en_US"
+}

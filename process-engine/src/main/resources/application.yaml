@@ -1,0 +1,24 @@
+camunda.bpm:
+  admin-user:
+    id: admin
+    password: admin123
+    firstName: Admin
+  filter.create: All tasks
+
+spring:
+  datasource.url: jdbc:h2:file:./target/camunda
+  h2.console.enabled: true
+  kafka:
+    consumer:
+      group-id: process-engine
+      auto-offset-reset: earliest
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "*"
+
+    producer:
+      client-id: process-engine
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    bootstrap-servers: localhost:9092
+
+server.port: 9081

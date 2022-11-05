@@ -1,0 +1,13 @@
+spring:
+  kafka:
+    consumer:
+      group-id: rest-api
+      auto-offset-reset: earliest
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "*"
+    producer:
+      client-id: rest-api
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    bootstrap-servers: localhost:9092
+server.port: 9080
