@@ -7,9 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class StartQuoteProcess implements RequestEvent {
-    String type;
-    String locale;
+public class ResultRequest implements RequestEvent {
+    String correlationId;
     String responseTopic;
 
     @Override

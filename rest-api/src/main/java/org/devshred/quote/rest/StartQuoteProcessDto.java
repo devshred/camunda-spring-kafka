@@ -2,7 +2,9 @@ package org.devshred.quote.rest;
 
 import static org.devshred.quote.KafkaTopics.TOPIC_PROCESS_ENGINE;
 
-import org.devshred.quote.model.StartQuoteProcess;
+import java.util.UUID;
+
+import org.devshred.quote.model.QuoteProcessStart;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,7 +17,7 @@ public class StartQuoteProcessDto {
     String type;
     String locale;
 
-    public StartQuoteProcess toEvent() {
-        return new StartQuoteProcess(type, locale, TOPIC_PROCESS_ENGINE);
+    public QuoteProcessStart toEvent() {
+        return new QuoteProcessStart(UUID.randomUUID().toString(), type, locale, TOPIC_PROCESS_ENGINE);
     }
 }

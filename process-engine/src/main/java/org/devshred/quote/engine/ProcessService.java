@@ -5,7 +5,6 @@ import static org.devshred.quote.engine.ProcessConstants.VAR_NAME_quote;
 
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 import org.camunda.bpm.engine.ProcessEngineException;
 import org.camunda.bpm.engine.RuntimeService;
@@ -22,8 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 public class ProcessService {
     private final RuntimeService runtimeService;
 
-    public void startProcess(String locale, String type) {
-        final String correlationId = UUID.randomUUID().toString();
+    public ProcessInstance startProcess(String correlationId, String locale, String type) {
         log.info("about to start process with correlationId: {}", correlationId);
         final ProcessInstance processInstance = runtimeService //
                 .createProcessInstanceByKey(PROCESS_KEY_quote) //
@@ -36,6 +34,8 @@ public class ProcessService {
         log.info("businessKey: {}", processInstance.getBusinessKey());
         log.info("processDefinitionId: {}", processInstance.getProcessDefinitionId());
         log.info("rootProcessInstanceId: {}", processInstance.getRootProcessInstanceId());
+
+        return processInstance;
     }
 
     public void processQuoteResponse(String correlationId, String quote) {

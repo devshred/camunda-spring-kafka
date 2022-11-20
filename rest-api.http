@@ -9,3 +9,6 @@ Content-Type: application/json
   "type": "HITCHHIKERS_GUIDE_TO_THE_GALAXY",
   "locale": "en_US"
 }
+
+### request results
+GET http://localhost:9080/result/87a9e72f-1d60-4dee-bb75-e5a22e50fcac
